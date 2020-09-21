@@ -1,0 +1,19 @@
+import built_ins
+import files
+import procs
+
+loop for proc in procs.Processes():
+    if proc.returncode == 1:
+        print str(proc)
+    else:
+        pass
+
+x = (2-1*4) / 4
+
+x *= 4
+
+x = 'a' * x
+
+x = x + 'l'
+
+print(x)
