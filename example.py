@@ -1,2 +1,1 @@
-with open("example.fys", 'r') as fys:
-    lines = fys.readlines()
+from FyreScript.Tokenizer.tokenize import Tokenizer
