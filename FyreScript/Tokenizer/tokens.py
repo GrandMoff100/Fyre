@@ -10,9 +10,15 @@ LEX_TABLE = {
     '-': 'OP',
     '*': 'OP',
     '/': 'OP',
-    '!=': 'NOT EQUALS',
-    '==': 'EQUALS'
-
+    '!=': 'LOGIC',
+    '==': 'LOGIC',
+    '>=': 'LOGIC',
+    '>': 'LOGIC',
+    '<': 'LOGIC',
+    '<=': 'LOGIC',
+    '(': 'LPAR',
+    ')': 'RPAR',
+    '.': 'PERIOD'
 }
 
 class Token:
