@@ -1,9 +1,10 @@
 STRING_INDICATORS = ["'", '"']
+KEYWORDS = [
+    ''
+]
 
-class Token(str):
-    def __init__(self, *args, **kwargs):
-        super(Token, self).__init__(*args, **kwargs)
 
+class Token:
     @staticmethod
     def _is_int(text):
         return text.isnumeric()

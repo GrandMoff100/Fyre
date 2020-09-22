@@ -1,5 +1,6 @@
-from .tokens import Token
+from .tokens import Token, KEYWORDS
 from FyreScript.Core.errors.base import RAISE_ERROR, Syntax_Error
+
 
 
 class Tokenizer:
@@ -69,5 +70,6 @@ class Tokenizer:
                 # If it is of the type, return True, and the type of the token.
                 token_type = is_method.__name__.replace('_is_', '', 1)
                 return True, token_type
-        # Else return False, and the type (None)
+        for TOKEN in KEYWORDS:
+            pass
         return False, token_type
