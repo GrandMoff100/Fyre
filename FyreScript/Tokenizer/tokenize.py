@@ -1,5 +1,6 @@
-from .tokens import Token
+from .tokens import Token, KEYWORDS
 from FyreScript.Core.errors.base import RAISE_ERROR, Syntax_Error
+
 
 
 class Tokenizer:
@@ -17,30 +18,16 @@ class Tokenizer:
             # Clear newline character at end if there is one.
             if line.endswith('\n'):
                 line = line[:-1]
+            yield from self.tokenize_line(line, line_num)
 
-            print(repr(line))
+    def tokenize_line(self, line, line_num):
+        temp_string = ''
+        scope = []
 
-            # Declare the variable that represents the current part
-            # of the line its analyzing.
-            temp_string = ''
-            for char in list(line):
-                if char != ' ':
-                    # If the character isn't a space
-                    temp_string += char
-                    # is_token: bool, token_type: str
-                    is_token, token_type = Tokenizer.is_token(temp_string)
-                    # If the token_string is actually a token.
-                    if is_token:
-                        # Yield the token object of the token string and reset the token_string.
-                        yield self.convert_to_token(temp_string)
-                        temp_string = ''
-                    else:
-                        # Raise a Syntax error.
-                        RAISE_ERROR(Syntax_Error(line, line_num))
-                else:
-                    # Else yield the current potential token string and reset it.
-                    yield temp_string
-                    temp_string = ''
+
+
+
+
 
     def convert_to_token(self, token_string: str):
         pass
@@ -56,7 +43,7 @@ class Tokenizer:
     @staticmethod
     def is_token(potential_token: str):
         # Token object attributes list
-        token_attrs = [obj for obj in Token().__dict__.values()]
+        token_attrs = [obj for obj in Token.__dict__.values()]
         # Filters the non-callable attributes of Token
         token_methods = [method for method in token_attrs if callable(method)]
         # Filters the methods that dont start with _is_, in order to get the is <type> methods.
@@ -69,5 +56,6 @@ class Tokenizer:
                 # If it is of the type, return True, and the type of the token.
                 token_type = is_method.__name__.replace('_is_', '', 1)
                 return True, token_type
-        # Else return False, and the type (None)
+        for TOKEN in KEYWORDS:
+            pass
         return False, token_type
