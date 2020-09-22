@@ -18,8 +18,6 @@ class Tokenizer:
             if line.endswith('\n'):
                 line = line[:-1]
 
-            print(repr(line))
-
             # Declare the variable that represents the current part
             # of the line its analyzing.
             temp_string = ''
@@ -27,6 +25,7 @@ class Tokenizer:
                 if char != ' ':
                     # If the character isn't a space
                     temp_string += char
+                    print(temp_string)
                     # is_token: bool, token_type: str
                     is_token, token_type = Tokenizer.is_token(temp_string)
                     # If the token_string is actually a token.
@@ -41,6 +40,7 @@ class Tokenizer:
                     # Else yield the current potential token string and reset it.
                     yield temp_string
                     temp_string = ''
+                print()
 
     def convert_to_token(self, token_string: str):
         pass
@@ -56,7 +56,7 @@ class Tokenizer:
     @staticmethod
     def is_token(potential_token: str):
         # Token object attributes list
-        token_attrs = [obj for obj in Token().__dict__.values()]
+        token_attrs = [obj for obj in Token.__dict__.values()]
         # Filters the non-callable attributes of Token
         token_methods = [method for method in token_attrs if callable(method)]
         # Filters the methods that dont start with _is_, in order to get the is <type> methods.
