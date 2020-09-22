@@ -18,30 +18,16 @@ class Tokenizer:
             # Clear newline character at end if there is one.
             if line.endswith('\n'):
                 line = line[:-1]
+            yield from self.tokenize_line(line, line_num)
 
-            # Declare the variable that represents the current part
-            # of the line its analyzing.
-            temp_string = ''
-            for char in list(line):
-                if char != ' ':
-                    # If the character isn't a space
-                    temp_string += char
-                    print(temp_string)
-                    # is_token: bool, token_type: str
-                    is_token, token_type = Tokenizer.is_token(temp_string)
-                    # If the token_string is actually a token.
-                    if is_token:
-                        # Yield the token object of the token string and reset the token_string.
-                        yield self.convert_to_token(temp_string)
-                        temp_string = ''
-                    else:
-                        # Raise a Syntax error.
-                        RAISE_ERROR(Syntax_Error(line, line_num))
-                else:
-                    # Else yield the current potential token string and reset it.
-                    yield temp_string
-                    temp_string = ''
-                print()
+    def tokenize_line(self, line, line_num):
+        temp_string = ''
+        scope = []
+
+
+
+
+
 
     def convert_to_token(self, token_string: str):
         pass
