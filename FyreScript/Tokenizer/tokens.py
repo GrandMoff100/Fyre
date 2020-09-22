@@ -1,7 +1,7 @@
 STRING_INDICATORS = ["'", '"']
 
 class Token(str):
-    def __init__(self, *args, **kwargs)
+    def __init__(self, *args, **kwargs):
         super(Token, self).__init__(*args, **kwargs)
 
     @staticmethod
