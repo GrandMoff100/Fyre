@@ -1,14 +1,30 @@
-STRING_INDICATORS = ["'", '"']
+LEX_TABLE = {
+    ':': 'COLON',
+    ',': 'COMMA',
+    ';': 'SEMICOLON',
+    '[': 'LBRACKET',
+    ']': 'RBRACKET',
+    '{': 'LCURlY',
+    '}': 'RCURLY',
+    '+': 'OP',
+    '-': 'OP',
+    '*': 'OP',
+    '/': 'OP',
+    '!=': 'NOT EQUALS',
+    '==': 'EQUALS'
 
-KEYWORDS = [
-    'import',
-    'loop for',
-    'loop while'
-    'in',
-    'print'
-]
-
+}
 
 class Token:
-    def __init__(self, text, line_num):
-        pass
+    def __init__(self, text: str, type: str, coords):
+        self.type = type
+        self.text = text
+        self.line_index, self.char_index = coords
+    
+    def __repr__(self):
+        return ' '.join(
+            [self.type, self.text]
+        )
+    
+    def __str__(self):
+        return self.text
