@@ -14,3 +14,4 @@ Development of a lang requires organization and cleanliness. Here are the code s
 ### Performance
 * Unecessary loops should be avoided
 * Cython should be used as much as possible
+* All alternatives to a piece of code should be tested and compared for the best
