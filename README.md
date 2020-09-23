@@ -1,0 +1,1 @@
+[![Run on Repl.it](https://repl.it/badge/github/GrandMoff100/FyreScript)](https://repl.it/github/GrandMoff100/FyreScript)
