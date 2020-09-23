@@ -20,7 +20,8 @@ LEX_TABLE = {
     ')': 'RPAR',
     '.': 'PERIOD',
     '**': 'OP',
-    '//': 'OP'
+    '//': 'OP',
+    '%': 'MOD'
 }
 
 class Token:
