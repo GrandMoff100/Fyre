@@ -18,7 +18,10 @@ LEX_TABLE = {
     '<=': 'LOGIC',
     '(': 'LPAR',
     ')': 'RPAR',
-    '.': 'PERIOD'
+    '.': 'PERIOD',
+    '**': 'OP',
+    '//': 'OP',
+    '^': 'OP'
 }
 
 class Token:
