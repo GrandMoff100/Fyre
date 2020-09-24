@@ -1,7 +1,13 @@
-from .tokens import Token, LEX_TABLE
+from .tokens import Token, LEX_TABLE, STRING_INDICATORS
 from FyreScript.Core.errors.base import RAISE_ERROR, Syntax_Error
-
 import time
+
+def is_string(text):
+    for indicator in STRING_INDICATORS:
+        if text.startswith(indicator) and text.endswith(indicator):
+            return True
+    return False
+
 
 
 class Tokenizer:
@@ -21,9 +27,13 @@ class Tokenizer:
         previous_char = None
 
         def previous_token(string, y):
+            _type = 'NAME'
+            _type = _type if string not in LEX_TABLE else LEX_TABLE[string]
+            _type = 'NUMBER' if string.isdecimal() else _type
+            _type = 'STRING' if is_string(string) else _type
             yield Token(
                     string, 
-                    'NAME' if string not in LEX_TABLE else LEX_TABLE[string], 
+                    _type, 
                     y
                 )
         

@@ -25,6 +25,11 @@ LEX_TABLE = {
     '\n': 'NEWLINE',
 }
 
+STRING_INDICATORS = [
+    '"',
+    "'"
+]
+
 class Token:
     def __init__(self, text: str, type: str, line_index: int):
         self.type = type
