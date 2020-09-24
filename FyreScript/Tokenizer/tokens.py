@@ -21,18 +21,19 @@ LEX_TABLE = {
     '.': 'PERIOD',
     '**': 'OP',
     '//': 'OP',
-    '%': 'MOD'
+    '%': 'MOD',
+    '\n': 'NEWLINE'
 }
 
 class Token:
-    def __init__(self, text: str, type: str, coords):
+    def __init__(self, text: str, type: str, line_index: int):
         self.type = type
         self.text = text
-        self.line_index, self.char_index = coords
+        self.line_index = line_index
     
     def __repr__(self):
         return ' '.join(
-            [self.type, self.text]
+            [self.type, repr(self.text)]
         )
     
     def __str__(self):
