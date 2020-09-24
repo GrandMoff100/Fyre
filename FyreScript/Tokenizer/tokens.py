@@ -22,7 +22,7 @@ LEX_TABLE = {
     '**': 'OP',
     '//': 'OP',
     '%': 'MOD',
-    '\n': 'NEWLINE'
+    '\n': 'NEWLINE',
 }
 
 class Token:

@@ -18,11 +18,12 @@ class Tokenizer:
 
     def tokenize_line(self, line, line_num):
         temp_string = ''
+        previous_char = None
 
         def previous_token(string, y):
             yield Token(
                     string, 
-                    'NAME', 
+                    'NAME' if string not in LEX_TABLE else LEX_TABLE[string], 
                     y
                 )
         
